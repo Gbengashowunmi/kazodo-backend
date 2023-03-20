@@ -13,6 +13,9 @@ const corsOptions ={
    optionSuccessStatus:200,
 } 
 
+app.get("/", (req, res)=>{
+  res.send("Hello Distinguished")
+})
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
 //middlewares
@@ -25,7 +28,7 @@ app.use("/", require("./routes/userRoutes"));
 const connecteDb = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI); 
-    console.log("connected to db");
+    // console.log("connected to db");
   } catch (error) {
     console.log(error);
     process.exit(1);
